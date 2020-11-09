@@ -73,7 +73,7 @@ public class AgendamentoController {
 		}
 	}
 	
-	@GetMapping("/{idBairro}")
+	@GetMapping("/agendamento-por-bairro/{idBairro}")
 	public ResponseEntity<List<AgendamentoDTO>> listarAgendamentosPorBairro(@PathVariable("idBairro") Long idBairro){
 		return ResponseEntity.ok(service.listarAgendamentosPorBairro(idBairro));
 	}
