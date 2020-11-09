@@ -12,6 +12,6 @@ public interface DepartamentoService {
 	DepartamentoDTO atualizar(Departamento departamento);
 	void excluir(Long id);
 	List<DepartamentoDTO> listarDepartamentos();
-	Optional<DepartamentoDTO> listarDepartamentoPorBairro(Long id);
+	Optional<DepartamentoDTO> listarDepartamentoPorId(Long id);
 	
 }

@@ -39,7 +39,7 @@ public class DepartamentoServiceImpl implements DepartamentoService {
 	}
 
 	@Override @Transactional(readOnly = true)
-	public Optional<DepartamentoDTO> listarDepartamentoPorBairro(Long id) {
+	public Optional<DepartamentoDTO> listarDepartamentoPorId(Long id) {
 		return repository.findById(id).map(DepartamentoDTO::create);
 	}
 
