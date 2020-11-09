@@ -1,6 +1,7 @@
 package com.reciclanavirai.api;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.reciclanavirai.domain.Agendamento;
 import com.reciclanavirai.domain.dto.AgendamentoDTO;
+import com.reciclanavirai.domain.dto.BairroDTO;
 import com.reciclanavirai.service.AgendamentoService;
 
 @RestController
@@ -59,6 +61,16 @@ public class AgendamentoController {
 	@GetMapping
 	public ResponseEntity<List<AgendamentoDTO>> listarAgendamentos(){
 		return ResponseEntity.ok(service.listarAgendamentos());
+	}
+	
+	@GetMapping("/{id}")
+	public ResponseEntity listarAgendamentosPorId(@PathVariable("id") Long id){
+		Optional<AgendamentoDTO> agendamento = service.listarAgendamentoPorId(id);
+		if(!agendamento.isPresent()) {
+			return ResponseEntity.badRequest().body("O agendamento para o ID informado não foi localizado");
+		} else {
+			return ResponseEntity.ok(agendamento);
+		}
 	}
 	
 	@GetMapping("/{idBairro}")

@@ -26,7 +26,8 @@ public class AgendamentoServiceImpl implements AgendamentoService {
 
 	@Override
 	public AgendamentoDTO salvar(Agendamento agendamento) {
-		Bairro bairro = bairroRepository.findById(agendamento.getBairro().getId()).orElseThrow(() -> new RegraDeNegocioException("Bairro não encontrado"));
+		Bairro bairro = bairroRepository.findById(agendamento.getBairro().getId())
+				.orElseThrow(() -> new RegraDeNegocioException("Bairro não encontrado"));
 		agendamento.setBairro(bairro);
 		
 		Optional<Agendamento> agendamentoComparado = agendamentoRepository.compararAgendamento(
